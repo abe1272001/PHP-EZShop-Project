@@ -1,0 +1,170 @@
+/* Global */
+html,
+body {
+  /* height: 100%; */
+}
+
+header {
+  /* height: 10vh; */
+}
+
+main {
+  background-color: #f5f5f5;
+  min-height: 80%;
+  position: relative;
+}
+
+.footer {
+  /* margin-top: 1rem; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  background-color: #f2dda4;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* shop-container */
+.shop-container {
+  height: auto;
+  padding-bottom: 5rem;
+}
+
+/* HEADER CONTROL */
+.header-control {
+  /* background-color: burlywood; */
+  z-index: 1200;
+}
+
+.shoppingCart svg {
+  height: 1.6rem;
+  /* line-height: 3rem; */
+  margin-top: 0.2rem;
+  display: inline-block;
+}
+
+.shoppingCart div {
+  display: inline-block;
+  color: black;
+  line-height: 2.1rem;
+}
+
+.shoppingCart:hover div {
+  color: rgb(226, 43, 98);
+}
+
+.shoppingCart:hover svg {
+  fill: rgb(226, 43, 98);
+}
+
+#cart_count {
+  text-align: center;
+  padding: 0 0.5rem 0.1rem 0.5rem;
+  border-radius: 3rem;
+}
+
+.shoppingCart h5 {
+  line-height: 2rem;
+}
+
+.user-control,
+.fa-user {
+  line-height: 2rem;
+  margin-left: 0.5rem;
+}
+
+.user-control:hover {
+  cursor: pointer;
+  color: rgb(78, 78, 241);
+}
+
+.dropdown-menu {
+  min-width: 10rem;
+  text-align: center;
+  left: -7rem;
+}
+
+/* LIST GROUP */
+.list-group {
+  /* margin-top: 4rem !important; */
+  top: 5rem;
+}
+
+/* CARD */
+.card-body > .card-text {
+  margin-bottom: 0.5rem;
+}
+.card-cta {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card-cta > .price-control {
+  margin: 0;
+  color: rgb(214, 50, 86);
+  flex: 1 1 2rem;
+}
+
+.button-group {
+  display: flex;
+  flex: 1 1 3rem;
+  justify-content: center;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.badge {
+  margin-top: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+#cta-add {
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+#cta-add:hover {
+  color: white;
+  background-color: var(--pink);
+}
+
+#cta-add:focus {
+  box-shadow: 0 0 0 0.2rem #f3b6c8;
+}
+
+#cta-buy {
+  margin-left: 0.5rem !important;
+}
+
+/* CARD MODEL: Login */
+.fb {
+  background-color: #3b5998;
+  color: white;
+}
+
+.twitter {
+  background-color: #55acee;
+  color: white;
+}
+
+.google {
+  background-color: #dd4b39;
+  color: white;
+}
+
+.social {
+  margin: auto;
+  width: 90%;
+}
+
+#login,
+#loginAlready {
+  z-index: 1500;
+}

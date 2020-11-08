@@ -1,0 +1,74 @@
+create database ezshopdb default character set utf8;
+use ezshopdb
+create table products (
+   ProductID int auto_increment  primary key,
+   ProductName varchar(50) NOT NULL,
+   ProductDesc varchar(250) default NULL,
+   UnitPrice int  NULL,
+   CatagoryID int default NULL,
+   ProductImage varchar(40) default NULL
+);
+
+//圖片檔名還沒加
+insert into products
+(ProductName, ProductDesc, UnitPrice,CatagoryID, Category, CategoryName, ProductImage) values
+("MacBook Pro","超強大", 9000, 'primary',1,'電腦', 'product_macbook' ),
+("Ipad Pro","超大螢幕", 8000, 'success',2,'平板', 'product_macbook' ),
+("iphone XI","超快速", 7000, 'warning',3, '手機','product_macbook' ),
+("AirPods Pro","超輕巧", 6000, 'info',4, '配件','product_macbook' );
+
+insert into products
+(ProductName, UnitPrice, CatagoryID, Category, CategoryName, ProductImage) VALUES
+('Icy Arc Hooded Sweatshirt',7200, 'primary', 1, 'Shirt', 'product_1')
+
+
+//user
+insert into users
+(UserName, UserEmail, UserPassword, UserPhone, UserAddress) values
+("王大偉","abe1272001@gmail.com", "1234", "0955124733", "台中市南屯區" )
+
+//order 
+$sql_orders = "
+      CREATE TABLE IF NOT EXISTS orders
+      (OrderID int auto_increment primary key,
+      CustomerID varchar(100) DEFAULT NULL,
+      ShipName varchar(100) NOT NULL,
+      ShipAddress varchar(300) NOT NULL,
+      ShipPhone varchar(50) NOT NULL,
+      ShipPayment varchar(100) DEFAULT NULL);
+      ";
+
+insert into orders 
+    (CustomerID, ShipName, ShipAddress, ShipPhone, ShipPayment) values
+    (null, '陳大明', '台南市', '0987543567', 'ATM轉帳')
+
+//更新方法
+UPDATE products
+set ProductImage = "product_airpods_pro" WHERE ProductID = 4
+
+
+SELECT * FROM orders o join orderdetails od on o.OrderID = od.OrderID
+WHERE o.OrderID = 21
+
+SELECT * FROM orders o join orderdetails od on o.OrderID = od.OrderID 
+JOIN products pd ON pd.ProductID = od.ProductID
+WHERE o.OrderID = 14
+
+//從伺服器取得訂單明細
+SELECT o.OrderID, o.CustomerID,od.ProductID, pd.UnitPrice, od.Quantity, pd.ProductName, pd.ProductImage FROM orders o join orderdetails od on o.OrderID = od.OrderID 
+JOIN products pd ON pd.ProductID = od.ProductID
+WHERE o.OrderID = 22
+
+//選到最大的訂單明細
+SELECT o.OrderID, o.CustomerID,od.ProductID, pd.UnitPrice, od.Quantity, pd.ProductName, pd.ProductImage FROM orders o join orderdetails od on o.OrderID = od.OrderID 
+JOIN products pd ON pd.ProductID = od.ProductID
+WHERE o.OrderID = (select MAX(OrderID) FROM orders )
+
+可以加上 where 來取得會員自己的訂單 where o.CatagoryID = ?
+
+//選到最大的訂單
+SELECT * FROM 	orders o WHERE o.OrderID = (SELECT MAX(OrderID) FROM orders)
+
+//使用者的訂單數量
+SELECT COUNT(*) FROM `orders` where CustomerID = 3  
+SELECT * FROM `orders` where CustomerID = 3
